@@ -41,7 +41,7 @@ function Update_Cron {
     perl -i -pe "s|.+(bash git_pull.+)|${RanMin} ${H} \* \* \* sleep ${RanSleep} && \1|" ${ListCron}
     #美丽研究院分随机cron
     perl -i -pe "s|1 7,12(.+jd_beauty\W*.*)|${ranH} 7,12\1|" ${ListCron}
-     #修复joy_run错误cron
+    #修复joy_run错误cron
     perl -i -pe "s|18 11,14(.+jd_joy_run\W*.*)|${RanHour} 9-20/2\1|" ${ListCron}
     crontab ${ListCron}
   fi
@@ -143,7 +143,7 @@ function Change_ALL {
     . ${FileConf}
     if [ -n "${Cookie1}" ]; then
       Count_UserSum
-      Change_JoyRunPins
+   #   Change_JoyRunPins
     fi
   fi
 }
