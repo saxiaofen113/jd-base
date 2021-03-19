@@ -1,8 +1,8 @@
 name: "Docker_node_python"
 on:
- # push:
- #   branches:
- #     - py
+  push:
+    branches:
+      - py
   workflow_dispatch:
   
   
