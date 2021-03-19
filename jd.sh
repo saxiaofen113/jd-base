@@ -289,15 +289,32 @@ function Run_Normal2 {
 
 #运行AutoSignMachine.js脚本
 function Run_Normal3 {
-  if [ -f ${ConfigDir}/$1.json ]; then
+    if [ -f ${ConfigDir}/$1.json ]; then
+      LogTime=$(date "+%Y-%m-%d-%H-%M-%S")
+      LogFile="${LogDir}/$1/${LogTime}.log"
+      [ ! -d ${LogDir}/$1 ] && mkdir -p ${LogDir}/$1
+      cd ${ScriptsDir3}
+      node ${Dir} $1 --config ${ConfigDir}/$1.json | tee ${LogFile}
+      else 
+       echo -e "\n配置文件不存在\n"
+    fi
+}
+
+#运行unicom脚本
+function Run_Normal4 {
+  Import_Conf $1 && Detect_Cron
+
+  for ((i=1; i<=${aus}; i++)); do
+    eval c='$'"unicomcookie$i"
+    eval U='$'"unicomuser$i"
+    eval P='$'"unicompassword$i"
+    eval A='$'"unicomappid$i"
     LogTime=$(date "+%Y-%m-%d-%H-%M-%S")
-    LogFile="${LogDir}/$1/${LogTime}.log"
-    [ ! -d ${LogDir}/$1 ] && mkdir -p ${LogDir}/$1
+    LogFile="${LogDir}/$1$i/${LogTime}.log"
+    [ ! -d ${LogDir}/$1$i ] && mkdir -p ${LogDir}/$1$i
     cd ${ScriptsDir3}
-    node ${Dir} $1 --config ${ConfigDir}/$1.json | tee ${LogFile}
-    else 
-      echo -e "\n配置文件不存在\n"
-  fi
+    node ${Dir} $1 --cookies ${C} --user ${U} --password ${P} --appid ${A} | tee ${LogFile}
+  done
 }
 
 ## 命令检测
@@ -318,7 +335,7 @@ case $# in
     elif [[ $1 == iqiyi ]]; then
       Run_Normal3 $1
     elif [[ $1 == unicom ]]; then
-      Run_Normal3 $1
+      Run_Normal4 $1
     else
       Run_Normal $1
     fi

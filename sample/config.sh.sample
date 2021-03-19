@@ -1,6 +1,6 @@
-## Version: v3.30.6
+## Version: v3.31.6
 ## Date: 2021-3-8
-## Update Content: 京小兑控制变量，宠汪汪自己内部账户互助变量,环球挑战赛互助变量。
+## Update Content: 更新联通49脚本，请于config.sh末尾填写相应参数。（上回更新：京小兑控制变量，宠汪汪自己内部账户互助变量,环球挑战赛互助变量。）
 
 ## 上面版本号中，如果第2位数字有变化，那么代表增加了新的参数，如果只有第3位数字有变化，仅代表更新了注释，没有增加新的参数，可更新可不更新
 ## 如需更新，请参考WIKI（https://github.com/EvineDeng/jd-base/wiki）中"如何更新配置文件"部分的操作说明，进行智能比对后修改。
@@ -618,11 +618,22 @@ EnableExtraShell=""
 ## 请在以下补充你需要用到的额外的环境变量，形式：export 变量名="变量值"
 
 ################################## 喜玛拉亚极速版 #########################################
-## 所需要的环境变量请去作者地址查看，因为是京东脚本为主，所以在京东缺失cookie的情况下此脚本也不会运行。仓库地址：https://github.com/Zero-S1/xmly_speed
+## 所需要的环境变量请去作者地址查看，因为是京东脚本为主，所以在京东缺失cookie的情况下此脚本也不会运行。(若只想运行此脚本，请随意填写一个京东cookie)
+## 仓库地址：https://github.com/Zero-S1/xmly_speed
 export XMLY_SPEED_COOKIE=""
 
 ###############################联通，爱奇艺，bilibili，52pojie#############################
-##请至config文件夹中相应的.json文件进行查看。参考仓库地址：https://github.com/kangwenhang/jd_docker2/tree/AutoSignMachine（非原仓库地址）
-##注意：.json文件配置完成后请删除内容注释那一行。
-##联通脚本更新，请于config文件中创建.env文件并且填写参数（注意：联通的json文件不用配置，但不可以删除，必须保留并且删除第一行注释）
-##env文件参考：https://github.com/dockere/jd-base/blob/py/sample/.env.sample
+## 请至config文件夹中相应的.json文件进行查看。参考仓库地址：https://github.com/kangwenhang/jd_docker2/tree/AutoSignMachine（非原仓库地址）
+## 因为是京东脚本为主，所以在京东缺失cookie的情况下此脚本也不会运行。(若只想运行此脚本，请随意填写一个京东cookie)
+## 联通脚本更新49任务，请于下方填写参数。
+
+#联通脚本
+aus="2"
+unicomcookies1=""
+unicomuser1=""
+unicompassword1=""
+unicomappid1=""
+unicomcookies2=""
+unicomuser2=""
+unicompassword2=""
+unicomappid2=""
